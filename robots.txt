@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://milzarbit.github.io/portal-newballsports-com/sitemap.xml

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新球体育 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* ---------- hero ---------- */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(226, 232, 240, 0.7);
+            transition: box-shadow 0.2s;
+        }
+
+        .hero:hover {
+            box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 1.8rem;
+            padding: 0 0.5rem;
+        }
+
+        .hero .btn-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero .btn {
+            display: inline-block;
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 1.05rem;
+            text-decoration: none;
+            border: 1px solid #1e293b;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+
+        .hero .btn.outline {
+            background: transparent;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+            box-shadow: none;
+        }
+
+        .hero .btn.outline:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        .hero .btn:not(.outline):hover {
+            background: #0f172a;
+            transform: translateY(-1px);
+        }
+
+        /* ---------- 卡片通用 ---------- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+            transform: translateY(-2px);
+        }
+
+        .card h2, .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p, .card li {
+            color: #334155;
+            font-size: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card ul li {
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #94a3b8;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #f1f5f9;
+            color: #1e293b;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.2rem 0.8rem;
+            border-radius: 100px;
+            margin-bottom: 0.8rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* ---------- 说明区 ---------- */
+        .intro-wide {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .intro-wide p {
+            margin-bottom: 1rem;
+        }
+
+        .intro-wide a {
+            color: #1d4ed8;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        .intro-wide a:hover {
+            color: #1e40af;
+        }
+
+        .intro-wide .meta-note {
+            background: #f8fafc;
+            border-left: 4px solid #cbd5e1;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0 0.5rem;
+            color: #475569;
+        }
+
+        /* ---------- FAQ 摘要 ---------- */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0 0.9rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-a {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* ---------- 底部 ---------- */
+        .footer-links {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+        }
+
+        .footer-links .meta {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .footer-links .links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links .links a {
+            color: #334155;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .footer-links .links a:hover {
+            color: #0f172a;
+            border-bottom-color: #94a3b8;
+        }
+
+        .footer-links .brand-link {
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        /* ---------- 响应式 ---------- */
+        @media (max-width: 780px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .sub {
+                font-size: 1rem;
+            }
+
+            .intro-wide {
+                padding: 2rem 1.2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .hero .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 区 -->
+    <section class="hero">
+        <h1>新球体育 · 站点导览</h1>
+        <p class="sub">围绕体育资讯与内容服务，提供清晰、稳定的信息入口。这里是你了解平台概况的第一站。</p>
+        <div class="btn-wrap">
+            <a href="https://portal-newballsports.com" class="btn">新球体育</a>
+            <a href="#intro" class="btn outline">了解更多</a>
+        </div>
+    </section>
+
+    <!-- 优势区 + 场景 双卡片-->
+    <div class="card-grid">
+        <div class="card">
+            <span class="tag">特点</span>
+            <h2>内容与结构</h2>
+            <ul>
+                <li>清晰的频道分区，便于按兴趣浏览</li>
+                <li>信息呈现注重可读性，减少干扰</li>
+                <li>保持稳定的页面体验，适配常用设备</li>
+                <li>持续迭代基础功能，以实用为优先</li>
+            </ul>
+        </div>
+        <div class="card">
+            <span class="tag">适用场景</span>
+            <h2>日常使用参考</h2>
+            <ul>
+                <li>快速查阅体育相关资讯与动态</li>
+                <li>作为内容导航的辅助起点</li>
+                <li>在移动端或桌面端均可正常浏览</li>
+                <li>适合对简洁界面有偏好的用户</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 说明区：站点介绍与可信说明 -->
+    <div class="intro-wide" id="intro">
+        <h2 style="font-size:1.5rem; margin-bottom:1.2rem; font-weight:600;">关于站点的简要说明</h2>
+        <p>
+            <a href="https://portal-newballsports.com">新球体育</a> 作为一个信息聚合与内容展示平台，其定位是为用户提供一个相对集中的浏览入口。站点内容涵盖多个体育相关版块，页面设计以清晰、直接为原则，避免过度装饰，让信息本身成为重点。
+        </p>
+        <p>
+            在运营与维护方面，平台注重基础体验的稳定性，并持续对页面结构、加载效率进行优化。所有内容均以客观展示为出发点，不包含任何夸大或误导性描述。用户可以根据自身需要，自由探索站内各区域。
+        </p>
+        <div class="meta-note">
+            <strong>可信说明：</strong> 本站不收集超出常规访问统计所需的个人数据，不设置自动弹出式广告或诱导行为。页面中的链接均指向平台自有内容或经过核验的关联页面。如果你希望直接访问主站，可以使用上方按钮或本段中的 <a href="https://portal-newballsports.com">新球体育</a> 链接。
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card">
+        <h3 style="margin-bottom:0.2rem;">常见问题摘要</h3>
+        <p style="color:#64748b; font-size:0.9rem; margin-bottom:1.2rem;">以下整理了几条用户常问的内容，供快速参考。</p>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-q">这个站点主要提供什么？</div>
+                <div class="faq-a">以体育资讯、内容导航和基础信息展示为主，是一个内容型门户入口。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">页面在手机上看兼容吗？</div>
+                <div class="faq-a">已经针对常用屏幕尺寸做了适配，手机和平板均可正常浏览，排版会自动调整。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">是否需要注册或下载？</div>
+                <div class="faq-a">访问公开页面无需注册，也不强制下载任何应用。部分功能可能在未来迭代中逐步开放。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">如何找到更多内容版块？</div>
+                <div class="faq-a">直接通过 <a href="https://portal-newballsports.com">新球体育</a> 首页的导航区域即可浏览各个分区，结构比较直观。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <div class="meta">© 新球体育 · 信息页</div>
+        <div class="links">
+            <a href="https://portal-newballsports.com">新球体育</a>
+            <a href="#intro">站点说明</a>
+            <a href="#">常见问题</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
